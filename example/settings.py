@@ -55,7 +55,7 @@ ROOT_URLCONF = 'example.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],#add templates to DIRS
+        'DIRS': ['templates'],#add templates to DIRS to access main templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,10 +117,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+#Need the following configuration for static and media
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')#staticfiles collects all static files from server
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

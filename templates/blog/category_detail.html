@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block seo_title %}{{category.seo_title}}{% endblock %}
+{% block seo_description %}{{category.seo_description}}{% endblock %}
+
+
+{% block content %}
+<h1>{{category.title}}</h1>
+<p>{{category.description}}</p>
+<hr>
+{% for item in post %}
+<h2>{{item.title}}</h2>
+{{item.body|truncatechars:50}}
+{% endfor %}
+{% endblock %}

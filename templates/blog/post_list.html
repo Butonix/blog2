@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% for obj in object_list %}
+<form method="GET" action="{% url 'blog:search' %}">
+        <input name="q" value="{{request.GET.q}}" placeholder="Search...">
+        <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">
+                    Search
+                </button>
+        </span>
+</form>
+{% for obj in items %}
 
     <h1><a href="{% url 'blog:blog_detail' slug=obj.slug %}">{{obj.title}}</a></h1>
     <p>{{obj.body}}</p>
-    <p>{{obj.category}}</p>
+    <p><a href="{% url 'blog:category_detail' slug=obj.category.slug %}">{{obj.category}}</a></p>
 
 {% endfor %}
+{% include 'pagination.html' %}
+
 {% endblock %}
