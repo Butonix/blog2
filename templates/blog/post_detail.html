@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block seo_title %}{% endblock %}
+{% block seo_description %}{% endblock %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+<p>{{post.category}}</p>
+{{post.body}}
+{% endblock %}
